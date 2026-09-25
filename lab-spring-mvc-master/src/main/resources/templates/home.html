@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab Spring MVC — Produtos</title>
+  <style>
+    body { font: 16px/1.5 system-ui, sans-serif; margin: 0; background: #f4f6fa; color: #17233b; }
+    main { max-width: 760px; margin: 48px auto; padding: 0 20px; }
+    section { background: white; border-radius: 12px; padding: 24px; margin: 20px 0; box-shadow: 0 2px 14px #17233b12; }
+    form { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; }
+    label { display: grid; gap: 5px; flex: 1 1 180px; }
+    input { padding: 9px; font: inherit; border: 1px solid #aab5c8; border-radius: 6px; }
+    button { padding: 10px 14px; border: 0; border-radius: 6px; background: #205bb3; color: white; cursor: pointer; }
+    button.secondary { background: #66738a; }
+    button.danger { background: #a32f37; }
+    li { padding: 12px 0; border-bottom: 1px solid #e4e8ef; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    li span { flex: 1 1 230px; }
+    #status { min-height: 1.5em; }
+  </style>
+  <script src="/js/produtos.js" defer></script>
+</head>
+<body>
+<main>
+  <h1 th:text="${message}">Bem-vindo ao Lab Spring MVC!</h1>
+  <p>Esta página é renderizada pelo Thymeleaf. Os produtos são carregados pela API REST.</p>
+  <section>
+    <h2 id="form-title">Novo produto</h2>
+    <form id="produto-form">
+      <input id="produto-id" type="hidden">
+      <label>Nome <input id="nome" name="nome" required maxlength="120"></label>
+      <label>Preço (R$) <input id="preco" name="preco" type="number" required min="0" step="0.01"></label>
+      <button type="submit">Salvar</button>
+      <button id="cancelar" class="secondary" type="button" hidden>Cancelar edição</button>
+    </form>
+  </section>
+  <section>
+    <h2>Produtos</h2>
+    <p id="status" role="status" aria-live="polite"></p>
+    <ul id="produtos"></ul>
+  </section>
+</main>
+</body>
+</html>
